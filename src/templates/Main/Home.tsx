@@ -10,6 +10,7 @@ type RootStackParamList = {
     Register: undefined;
     Home: undefined;
     ListConfig: undefined;
+    Perfil: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -26,7 +27,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
     
     <ScrollView style={styles.container}>
     <View style={styles.headerContainerNav}>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
       <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
       <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>

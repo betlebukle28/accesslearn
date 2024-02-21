@@ -11,6 +11,7 @@ type RootStackParamList = {
     Register: undefined;
     Home: undefined;
     ListConfig: undefined;
+    Perfil: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ListConfig'>;
@@ -20,14 +21,13 @@ type Props = {
   navigation: RegisterScreenNavigationProp;
 };
 
-
 const ListConfig: React.FC<Props> = ({ navigation }) => {
  
   return (
     
     <ScrollView style={styles.container}>
     <View style={styles.headerContainerNav}>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
       <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -40,6 +40,12 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
       <View style={styles.headerContainer}>
         <Text style={[styles.headerTitle]}>Configuracion</Text>
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <View style={styles.menuContainer}>
+        <Text style={styles.menuText}>Regresar</Text>
+        <AntDesign name="right" size={24} color="black" />
+      </View>
+      </TouchableOpacity>
       <TouchableOpacity>
       <View style={styles.menuContainer}>
         <Text style={styles.menuText}>Perfil</Text>
@@ -58,30 +64,14 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
         <AntDesign name="right" size={24} color="black" />
       </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
       <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
+        <Text style={styles.menuText}>Salir</Text>
         <AntDesign name="right" size={24} color="black" />
       </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.ButtonList}>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
+       </TouchableOpacity>
+      
+      
     </ScrollView>
   );
 };
@@ -111,8 +101,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 15,
-    paddingBottom: 15,
+    paddingLeft: 20,
+    paddingBottom: 30,
   },
   menuButton: {
     width: '40%', // Aproximadamente para dos botones por fila
@@ -138,11 +128,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F0F0F0', // Un color de fondo para el botón
     borderRadius: 10,
-  },
-  menuIcon: {
-    width: '60%', // Ajusta según tus necesidades
-    height: '60%', // Ajusta según tus necesidades
-    resizeMode: 'contain',
   },
   menuText: {
     fontSize: 16,
