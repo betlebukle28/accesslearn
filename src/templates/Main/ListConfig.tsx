@@ -31,7 +31,7 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
       <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <Text style={styles.headerTitleNav }>A C C E S S L E A R N2121</Text>
+      <Text style={styles.headerTitleNav }>A C C E S S L E A R N</Text>
       </TouchableOpacity>
       <TouchableOpacity>
       <Fontisto name="nav-icon-list-a" size={28} color="white" />
