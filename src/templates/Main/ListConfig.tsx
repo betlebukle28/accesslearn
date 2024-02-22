@@ -5,6 +5,8 @@ import { Fontisto } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth }  from '../Login/AuthContext';
 
 type RootStackParamList = {
     Login: undefined;
@@ -22,6 +24,18 @@ type Props = {
 };
 
 const ListConfig: React.FC<Props> = ({ navigation }) => {
+
+  const { signOut } = useAuth();
+  
+  const handleSignOut = async () => {
+    await signOut(); // Llama a signOut. No necesitas pasar un callback aquí.
+    // Después de cerrar sesión, resetea el stack de navegación
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Login' }], // Asegúrate de que 'Login' sea el nombre correcto de tu ruta
+    });
+  };
+  
  
   return (
     
@@ -64,9 +78,9 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
         <AntDesign name="right" size={24} color="black" />
       </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity onPress={handleSignOut}>
       <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Salir</Text>
+        <Text style={styles.menuText}>Salir1</Text>
         <AntDesign name="right" size={24} color="black" />
       </View>
        </TouchableOpacity>

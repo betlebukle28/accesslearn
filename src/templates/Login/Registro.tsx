@@ -18,18 +18,53 @@ type Props = {
 };
 
 const Registro: React.FC<Props> = ({ navigation }) => {
-  const [username, setUsername] = useState('');
+  const [Nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [ApellidoPaterno, setApellidoPaterno] = useState('');
   const [ApellidoMaterno, setApellidoMaterno] = useState('');
   const [Telefono, setTelefono] = useState('');
+  const [Usuario, setUsuario] =  useState('');
 
-  const handleRegister = () => {
-    console.log('Registrar usuario');
-    // Aquí deberías agregar la lógica para registrar al usuario,
-    // como enviar los datos a un servidor o base de datos.
+  const handleRegister = async () => {
+    const url = 'http://172.26.26.78:3000/api/registrar-profesor'; // URL de tu API
+    
+    // Bbjeto con los datos del usuario
+    const userData = {
+      Nombre: Nombre,
+      ApellidoPaterno: ApellidoPaterno,
+      ApellidoMaterno: ApellidoMaterno,
+      email: email,
+      Telefono: Telefono,
+      Usuario: Usuario,
+      password: password,
+    };
+  
+    try {
+      // Solicitud POST a la API
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      const json = await response.json();
+  
+      if (response.status === 200) {
+        console.log('Usuario registrado con éxito:', json);
+        // Navegar a la pantalla de Login
+        navigation.navigate('Login');
+      } else {
+        console.log('Error en el registro:', json);
+      }
+    } catch (error) {
+      // Error en la Red
+      console.error('Error de solicitud:', error);
+    }
   };
+  
 
   return (
     <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps='handled'>
@@ -38,8 +73,8 @@ const Registro: React.FC<Props> = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Nombre"
-        value={username}
-        onChangeText={setUsername}
+        value={Nombre}
+        onChangeText={setNombre}
       />
       <TextInput
         style={styles.input}
@@ -66,6 +101,12 @@ const Registro: React.FC<Props> = ({ navigation }) => {
         value={Telefono}
         onChangeText={setTelefono}
         keyboardType="email-address"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Usuario"
+        value={Usuario}
+        onChangeText={setUsuario}
       />
       <TextInput
         style={styles.input}

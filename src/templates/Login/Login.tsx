@@ -1,8 +1,11 @@
 // Login.tsx
-import React from 'react';
+import React, { useState }  from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
+
 
 type RootStackParamList = {
   Login: undefined;
@@ -15,23 +18,78 @@ type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>;
 
 type Props = {
   navigation: LoginScreenNavigationProp;
-  route: LoginScreenRouteProp;
+  
 };
 
+
+
 const Login: React.FC<Props> = ({ navigation }) => {
+
+  const [Usuario, setUsuario] =  useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    const url = 'http://172.26.26.78:3000/api/login-profesor'; // URL de tu API
+    
+    // Bbjeto con los datos del usuario
+    const userData = {
+      Usuario: Usuario,
+      password: password,
+    };
+  
+    try {
+      // Solicitud POST a la API
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      const json = await response.json();
+  
+      if (response.status === 200) {
+        console.log('Usuario logueado con éxito:', json);
+        const token = json.token;
+      
+        // Almacenar el token en AsyncStorage
+        await AsyncStorage.setItem('userToken', token);
+      
+        // Resetea el stack de navegación y navega a la pantalla principal
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
+      } else {
+        // Manejo de errores
+        console.log('Error en el inicio de sesión del usuario:', json);
+        // Mostrar alerta de error al usuario
+        Alert.alert("Error", "Las credenciales no son correctas");
+      }
+    } catch (error) {
+      // Error en la Red
+      console.error('Error de solicitud:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>INICIAR SESION</Text>
         <Image source={require('../../images/AccessLearn.png')} style={styles.logo} />
     <Text style={styles.textinput}>USUARIO</Text>
       <View style={styles.inputContainer}>
-        <TextInput placeholder="Usuario" style={styles.input} />
+        <TextInput placeholder="Usuario" style={styles.input}
+        value={Usuario}
+        onChangeText={setUsuario} />
       </View>
       <Text style={styles.textinput}>CONTRASEÑA</Text>
       <View style={styles.inputContainer}>
-        <TextInput placeholder="Contraseña" style={styles.input} secureTextEntry />
+        <TextInput placeholder="Contraseña" style={styles.input} secureTextEntry
+        value={password}
+        onChangeText={setPassword} />
       </View>
-      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
         <View style={styles.button}>
           <Text style={styles.buttonText}>Iniciar Sesión</Text>
         </View>
