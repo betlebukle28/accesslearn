@@ -1,12 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput  } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useAuth }  from '../../controllers/AuthContext';
 
 type RootStackParamList = {
     Login: undefined;
@@ -15,28 +13,17 @@ type RootStackParamList = {
     ListConfig: undefined;
     Perfil: undefined;
     Desarrollo: undefined;
+    ListAlumnos: undefined;
   };
 
-type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ListConfig'>;
-type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'ListConfig'>;
+type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ListAlumnos'>;
+type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'ListAlumnos'>;
 
 type Props = {
   navigation: RegisterScreenNavigationProp;
 };
 
-const ListConfig: React.FC<Props> = ({ navigation }) => {
-
-  const { signOut } = useAuth();
-  
-  const handleSignOut = async () => {
-    await signOut(); // Llama a signOut. No necesitas pasar un callback aquí.
-    // Después de cerrar sesión, resetea el stack de navegación
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Login' }], // Asegúrate de que 'Login' sea el nombre correcto de tu ruta
-    });
-  };
-  
+const ListAlumnos: React.FC<Props> = ({ navigation }) => {
  
   return (
     
@@ -48,45 +35,26 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
       <Text style={styles.headerTitleNav }>A C C E S S L E A R N</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ListConfig')}>
       <Fontisto name="nav-icon-list-a" size={28} color="white" />
       </TouchableOpacity>
     </View>
       <View style={styles.headerContainer}>
-        <Text style={[styles.headerTitle]}>Configuracion</Text>
+        <Text style={[styles.headerTitle]}>Lista de niños</Text>
+        {/* <Image source={require('../../images/RobotDesarrollo.png')} style={styles.logoH4} /> */}
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Regresar</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
+      <View style={styles.container}>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Regresar</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Agregar Niño</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Ayuda y Soporte Tecnico</Text>
-        <AntDesign name="right" size={24} color="black" />
       </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Configuracion y Privacidad</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSignOut}>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Salir1</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-       </TouchableOpacity>
-      
-      
     </ScrollView>
   );
 };
@@ -106,10 +74,26 @@ const styles = StyleSheet.create({
     height: 100, // Ajusta según el tamaño de tu logo
     resizeMode: 'contain',
   },
+  logoH4: {
+    width: 300, // Ajusta según tus necesidades
+    height: 300, // Ajusta según tus necesidades
+    marginBottom: 20,
+  },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginVertical: 0,
+  },
+  input: {
+    backgroundColor: '#eee', // Fondo claro para los campos de texto
+    padding: 15, // Espaciado interno para el texto
+    borderRadius: 8, // Bordes redondeados para el input
+    fontSize: 16, // Tamaño de fuente legible
+  },
+  inputContainer: {
+    width: '80%', // Ancho del contenedor del input al 80% del ancho de la pantalla
+    marginBottom: 15,
+    paddingLeft: 20,
   },
   menuContainer: {
     flexDirection: 'row',
@@ -164,6 +148,35 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: 'bold',
     },
+    buttonContainer: {
+      width: '60%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
+      marginTop: 20,
+    },
+    button: {
+      backgroundColor: '#3896BF', // Un azul atractivo para el botón de inicio de sesión
+      padding: 15, // Espaciado interno para el botón
+      borderRadius: 20, // Bordes redondeados para el botón
+      alignItems: 'center', // Centra el texto del botón
+    },
+    buttonText: {
+      color: '#fff', // Texto blanco para que destaque en el botón azul
+      fontSize: 16, // Tamaño de fuente que coincide con el de los inputs
+      fontWeight: 'bold', // Texto en negrita para el botón
+    },
+    buttonTextLine: {
+      color: '#3896BF', // Texto Negro para que destaque en el botón blanco
+      fontSize: 16, // Tamaño de fuente que coincide con el de los inputs
+      fontWeight: 'bold',
+    },
+    buttonLine: {
+        backgroundColor: '#ffffff', // Un color de fondo claro para el botón
+        padding: 15, // Espaciado interno para el botón
+        borderRadius: 20, // Bordes redondeados para el botón
+        alignItems: 'center', // Centra el texto del botón
+        borderWidth: 2, // Ancho del borde de 2px
+        borderColor: '#3896BF', // Color del borde azul
+        borderStyle: 'solid', // Estilo del borde sólido
+      },
 });
 
-export default ListConfig;
+export default ListAlumnos;

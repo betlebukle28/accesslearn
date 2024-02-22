@@ -4,6 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
+import useAutoLogout from '../../controllers/TokenValidator';
 
 type RootStackParamList = {
     Login: undefined;
@@ -11,6 +12,8 @@ type RootStackParamList = {
     Home: undefined;
     ListConfig: undefined;
     Perfil: undefined;
+    Desarrollo: undefined;
+    ListAlumnos: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -22,12 +25,14 @@ type Props = {
 
 
 const Home: React.FC<Props> = ({ navigation }) => {
+
+  useAutoLogout();
  
   return (
     
     <ScrollView style={styles.container}>
     <View style={styles.headerContainerNav}>
-      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
       <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
       <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>
@@ -67,7 +72,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
           
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#3896BF"}]}>
+        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#3896BF"}]} onPress={() => navigation.navigate('ListAlumnos')}>
         <Text style={[styles.menuText, {color: "#ffffff"}]}>Lista de niños</Text>
           <Image source={require('../../../src/images/ListaDeN.png')} style={styles.menuIcon} />
           

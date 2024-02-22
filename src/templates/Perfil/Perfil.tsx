@@ -39,9 +39,17 @@ const Perfil: React.FC<Props> = ({ navigation }) => {
     </View>
       <View style={styles.headerContainer}>
         <Text style={[styles.headerTitle]}>Perfil</Text>
+        <Image source={require('../../images/RobotDesarrollo.png')} style={styles.logoH4} />
+      </View>
+
+      
+
+      <View style={styles.headerContainer}>
+        <Text style={[styles.menuText]}>Esta Pagina esta en desarrollo</Text>
+        <Text style={[styles.menuText]}>Favor de reintertar mas tarde</Text>
       </View>
       
-      <View style={styles.menuContainer}>
+      {/* <View style={styles.menuContainer}>
         <TextInput style={styles.menuText}>Regresar</TextInput>
        
       </View>
@@ -71,7 +79,7 @@ const Perfil: React.FC<Props> = ({ navigation }) => {
         <Text style={styles.menuText}>Salir</Text>
         <AntDesign name="right" size={24} color="black" />
       </View>
-       </TouchableOpacity>
+       </TouchableOpacity> */}
       
       
     </ScrollView>
@@ -93,10 +101,15 @@ const styles = StyleSheet.create({
     height: 100, // Ajusta según el tamaño de tu logo
     resizeMode: 'contain',
   },
+  logoH4: {
+    width: 300, // Ajusta según tus necesidades
+    height: 300, // Ajusta según tus necesidades
+    marginBottom: 20,
+  },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginVertical: 0,
   },
   input: {
     backgroundColor: '#eee', // Fondo claro para los campos de texto

@@ -54,9 +54,9 @@ const login = async (req, res) => {
             console.log("Contraseña correcta")
         }
 
-        // const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '1h' });
+        const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '1h' });
         // En tu backend
-        const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '30s' });
+        // const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '10s' });
 
 
 

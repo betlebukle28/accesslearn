@@ -29,7 +29,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const url = 'http://172.26.26.78:3000/api/login-profesor'; // URL de tu API
+    const url = 'http://192.168.1.6:3000/api/login-profesor'; // URL de tu API
     
     // Bbjeto con los datos del usuario
     const userData = {
@@ -65,7 +65,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
         // Manejo de errores
         console.log('Error en el inicio de sesión del usuario:', json);
         // Mostrar alerta de error al usuario
-        Alert.alert("Error", "Las credenciales no son correctas");
+        Alert.alert("Error", "Usuario y/o contraseña incorrectos");
       }
     } catch (error) {
       // Error en la Red

@@ -1,12 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput  } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useAuth }  from '../../controllers/AuthContext';
 
 type RootStackParamList = {
     Login: undefined;
@@ -17,26 +15,14 @@ type RootStackParamList = {
     Desarrollo: undefined;
   };
 
-type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ListConfig'>;
-type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'ListConfig'>;
+type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Desarrollo'>;
+type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'Desarrollo'>;
 
 type Props = {
   navigation: RegisterScreenNavigationProp;
 };
 
-const ListConfig: React.FC<Props> = ({ navigation }) => {
-
-  const { signOut } = useAuth();
-  
-  const handleSignOut = async () => {
-    await signOut(); // Llama a signOut. No necesitas pasar un callback aquí.
-    // Después de cerrar sesión, resetea el stack de navegación
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Login' }], // Asegúrate de que 'Login' sea el nombre correcto de tu ruta
-    });
-  };
-  
+const Desarrollo: React.FC<Props> = ({ navigation }) => {
  
   return (
     
@@ -48,46 +34,22 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
       <Text style={styles.headerTitleNav }>A C C E S S L E A R N</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ListConfig')}>
       <Fontisto name="nav-icon-list-a" size={28} color="white" />
       </TouchableOpacity>
     </View>
       <View style={styles.headerContainer}>
-        <Text style={[styles.headerTitle]}>Configuracion</Text>
+        <Text style={[styles.headerTitle]}>Pagina en Desarrollo</Text>
+        <Image source={require('../../images/RobotDesarrollo.png')} style={styles.logoH4} />
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Regresar</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Perfil</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Ayuda y Soporte Tecnico</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Configuracion y Privacidad</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSignOut}>
-      <View style={styles.menuContainer}>
-        <Text style={styles.menuText}>Salir1</Text>
-        <AntDesign name="right" size={24} color="black" />
-      </View>
-       </TouchableOpacity>
+
       
-      
-    </ScrollView>
+
+      <View style={styles.headerContainer}>
+        <Text style={[styles.menuText]}>Esta Pagina esta en desarrollo</Text>
+        <Text style={[styles.menuText]}>Favor de reintertar mas tarde</Text>
+      </View>
+      </ScrollView>
   );
 };
 
@@ -106,10 +68,26 @@ const styles = StyleSheet.create({
     height: 100, // Ajusta según el tamaño de tu logo
     resizeMode: 'contain',
   },
+  logoH4: {
+    width: 300, // Ajusta según tus necesidades
+    height: 300, // Ajusta según tus necesidades
+    marginBottom: 20,
+  },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginVertical: 0,
+  },
+  input: {
+    backgroundColor: '#eee', // Fondo claro para los campos de texto
+    padding: 15, // Espaciado interno para el texto
+    borderRadius: 8, // Bordes redondeados para el input
+    fontSize: 16, // Tamaño de fuente legible
+  },
+  inputContainer: {
+    width: '80%', // Ancho del contenedor del input al 80% del ancho de la pantalla
+    marginBottom: 15,
+    paddingLeft: 20,
   },
   menuContainer: {
     flexDirection: 'row',
@@ -166,4 +144,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ListConfig;
+export default Desarrollo;
