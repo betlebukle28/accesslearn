@@ -14,7 +14,7 @@ const registrar = async (req, res) => {
 
         const nuevoProfesor = new Profesor(parametros);
         nuevoProfesor.password = hashedPassword;
-
+        
         await nuevoProfesor.save()
         .then((result) => {
             res.status(200).json({
@@ -57,7 +57,6 @@ const login = async (req, res) => {
         const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '1h' });
         // En tu backend
         // const token = jwt.sign({ id: profesor._id }, 'your_jwt_secret', { expiresIn: '10s' });
-
 
 
         res.status(200).json({

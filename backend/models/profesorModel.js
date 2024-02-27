@@ -4,7 +4,21 @@ const mongoose = require('mongoose');
 const alumnoSchema = new Schema({
     nombreCompleto: {type: String, required: true},
     edad: {type: Number, required: true},
-    tipoDiscapacidad: {type: String, required: true},
+    Percepcionauditiva : {type: String, required: true},
+    Percepcionvisual: {type: String, required: true},
+    Discriminacion: {type: String, required: true},
+    Direccion: {type: String, required: true},
+    Coordinacion: {type: String, required: true},
+    Prension: {type: String, required: true},
+    Presion: {type: String, required: true},
+    Atencion: {type: String, required: true},
+    Asociacion: {type: String, required: true},
+    Seleccion: {type: String, required: true},
+    Clasificacion: {type: String, required: true},
+    Denominacion: {type: String, required: true},
+    Generalizacion: {type: String, required: true},
+    Generalizacion: {type: String, required: true},
+    Notas: {type: String, required: true},
 });
 
 const profesorSchema = new Schema({
