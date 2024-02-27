@@ -5,6 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
+import LocalHost from '../../controllers/UrlLocalHost';
 
 
 type RootStackParamList = {
@@ -29,7 +30,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const url = 'http://192.168.1.6:3000/api/login-profesor'; // URL de tu API
+    const url = LocalHost + '3000/api/login-profesor'; // URL de tu API
     
     // Bbjeto con los datos del usuario
     const userData = {

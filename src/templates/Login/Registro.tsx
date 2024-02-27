@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
-
+import LocalHost from '../../controllers/UrlLocalHost';
 
 type RootStackParamList = {
   Login: undefined;
@@ -27,7 +27,7 @@ const Registro: React.FC<Props> = ({ navigation }) => {
   const [Usuario, setUsuario] =  useState('');
 
   const handleRegister = async () => {
-    const url = 'http://192.168.1.6:3000/api/registrar-profesor'; // URL de tu API
+    const url = LocalHost + '3000/api/registrar-profesor'; // URL de tu API
     
     // Bbjeto con los datos del usuario
     const userData = {
