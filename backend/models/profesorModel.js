@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const alumnoSchema = new Schema({
     nombreCompleto: {type: String, required: true},
     edad: {type: Number, required: true},
+    genero:{  type: String, required: true  },
+    SePuedeSentar:{  type: Boolean, required: true  },
     Percepcionauditiva : {type: String, required: true},
     Percepcionvisual: {type: String, required: true},
     Discriminacion: {type: String, required: true},
@@ -16,7 +18,6 @@ const alumnoSchema = new Schema({
     Seleccion: {type: String, required: true},
     Clasificacion: {type: String, required: true},
     Denominacion: {type: String, required: true},
-    Generalizacion: {type: String, required: true},
     Generalizacion: {type: String, required: true},
     Notas: {type: String, required: true},
 });
