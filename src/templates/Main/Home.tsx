@@ -15,6 +15,7 @@ type RootStackParamList = {
     Desarrollo: undefined;
     ListAlumnos: undefined;
     RegistroAlumno: undefined;
+    RecursosAd: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -48,7 +49,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
       
       <View style={styles.menuContainer}>
         {/* Ejemplo de botón de menú */}
-        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#2A708F"}]}>
+        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#2A708F"}]} onPress={() => navigation.navigate('RecursosAd')}>
         <Text style={[styles.menuText, {color: "#ffffff"}]}>Recursos</Text>
         <Text style={[styles.menuText, {color: "#ffffff"}]}>Adicionales</Text>
           <Image source={require('../../../src/images/RecursosAd.png')} style={styles.menuIcon} />
