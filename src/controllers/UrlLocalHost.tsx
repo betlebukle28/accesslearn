@@ -1,4 +1,4 @@
 
-const LocalHost = "http://172.26.27.171:";
+const LocalHost = "http://192.168.1.6:";
 
 export default LocalHost
