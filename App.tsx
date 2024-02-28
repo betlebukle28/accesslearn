@@ -23,6 +23,7 @@ import Perfil from './src/templates/Perfil/Perfil';
 import Desarrollo from './src/templates/Extras/Desarrollo';
 import ListAlumnos from './src/templates/Main/ListAlumnos';
 import RegistroAlumno from './src/templates/Main/RegistroAlumno';
+import reportes from './src/templates/Extras/reportes';
 
 if (!global.btoa) {
     global.btoa = btoa;
@@ -51,6 +52,7 @@ const App = () => {
           <Stack.Screen name="ListConfig" component={ListConfig} options={{ headerShown: false }} />
           <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
           <Stack.Screen name="Desarrollo" component={Desarrollo} options={{ headerShown: false }} />
+          <Stack.Screen name="reportes" component={reportes} options={{ headerShown: false }} />
           <Stack.Screen name="ListAlumnos" component={ListAlumnos} options={{ headerShown: false }} />
           <Stack.Screen name= 'RegistroAlumno' component={RegistroAlumno} options={{headerShown: false}} />
         </Stack.Navigator>

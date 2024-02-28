@@ -16,6 +16,7 @@ type RootStackParamList = {
     ListConfig: undefined;
     Perfil: undefined;
     Desarrollo: undefined;
+    reportes: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ListConfig'>;
@@ -70,7 +71,7 @@ const ListConfig: React.FC<Props> = ({ navigation }) => {
         <AntDesign name="right" size={24} color="black" />
       </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('reportes')}>
       <View style={styles.menuContainerList}>
         <Text style={styles.menuText}>Ayuda y Soporte Tecnico</Text>
         <AntDesign name="right" size={24} color="black" />
