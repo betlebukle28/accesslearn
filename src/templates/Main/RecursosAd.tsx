@@ -55,16 +55,11 @@ const RecursosAd: React.FC<Props> = ({ navigation }) => {
         <Text style={[styles.menuText, {color: "#000000"}]}>Imprimibles</Text>          
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#F0F0F0"}]}>
+        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#F0F0F0"}]} onPress={() => navigation.navigate('Desarrollo')}>
           <Image source={require('../../../src/images/Consejos.png')} style={styles.menuIcon} />
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Consejos</Text>
+        <Text style={[styles.menuText, {color: "#00000"}]}>Consejos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#43943A"}]}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Personalización de actividades</Text>
-          <Image source={require('../../../src/images/PersActividades.png')} style={styles.menuIcon} />
-          
-        </TouchableOpacity>
 
         
         

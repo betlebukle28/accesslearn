@@ -20,6 +20,7 @@ const alumnoSchema = new Schema({
     Denominacion: {type: String, required: true},
     Generalizacion: {type: String, required: true},
     Notas: {type: String, required: true},
+    TipoAprendizaje: {type: String, required: true}
 });
 
 const profesorSchema = new Schema({

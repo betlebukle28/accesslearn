@@ -23,6 +23,8 @@ import Perfil from './src/templates/Perfil/Perfil';
 import Desarrollo from './src/templates/Extras/Desarrollo';
 import ListAlumnos from './src/templates/Main/ListAlumnos';
 import RegistroAlumno from './src/templates/Main/RegistroAlumno';
+import reportes from './src/templates/Extras/reportes';
+import RecursosAd from './src/templates/Main/RecursosAd';
 
 if (!global.btoa) {
     global.btoa = btoa;

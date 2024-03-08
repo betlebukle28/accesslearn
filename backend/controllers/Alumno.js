@@ -7,6 +7,7 @@ const registrarAlumno = async (req, res) => {
 
     try {
         const parametros = req.body;
+        console.log("parametros");
         console.log(parametros);
         const nuevoAlumno = new Alumno(parametros);
         
@@ -26,8 +27,21 @@ const registrarAlumno = async (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
+// LISTA DE ALUMNOS
+const ListAlumnos = async (req, res) => {
+
+    try {
+        const parametros = req.body;
+        console.log("parametros");
+        console.log(parametros);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
 
 
 module.exports = {
-    registrarAlumno
+    registrarAlumno,
+    ListAlumnos
 };

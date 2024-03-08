@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.post("/registrar-profesor", loginController.registrar);
 router.post("/login-profesor", loginController.login);
-router.post("/registrar-alumno ",verifyToken, alumnoController.registrarAlumno);
+router.post("/registrar-alumno",verifyToken, alumnoController.registrarAlumno);
+router.post("/list-alumnos",verifyToken, alumnoController.registrarAlumno);
 module.exports = router;

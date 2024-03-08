@@ -259,6 +259,19 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderRadius: 5,
       },
+      TextSm: {
+        width: '100%',
+        marginVertical: 10,
+        padding: 15,
+        fontSize: 15,
+      },
+      errorText: {
+        width: '100%',
+        marginVertical: 10,
+        padding: 15,
+        fontSize: 15,
+        color: '#E85A55',
+      },
       inputPicker: {
         width: '100%',
         marginVertical: 10,
@@ -267,6 +280,32 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderRadius: 5,
         marginBottom: 25,
+      },
+      radioButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
+      },
+      radioButtonSelected: {
+        height: 20,
+        width: 20,
+        borderRadius: 10,
+        borderWidth: 3,
+        borderColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#10B798',
+      },
+      radioButtonUnselected: {
+        height: 20,
+        width: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#000',
+        backgroundColor: '#fff',
+      },
+      radioButtonText: {
+        marginLeft: 10,
       },
   });
 
