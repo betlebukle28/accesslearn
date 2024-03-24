@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
       elevation: 5,
     },
     menuIcon: {
-      width: '60%', // Ajusta según tus necesidades
-      height: '60%', // Ajusta según tus necesidades
+      width: '80%', // Ajusta según tus necesidades
+      height: '80%', // Ajusta según tus necesidades
       resizeMode: 'contain',
     },
     menuText: {
@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
       TextCenter: {
         textAlign: 'center',
       },
-      buttonContainer: {
-        width: '60%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
-        marginTop: 20,
-      },
+      // buttonContainer: {
+      //   width: '60%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
+      //   marginTop: 20,
+      // },
       buttonSmall: {
         width: '45%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
         marginTop: 2,
@@ -306,6 +306,80 @@ const styles = StyleSheet.create({
       },
       radioButtonText: {
         marginLeft: 10,
+      },
+      text: {
+        textAlign: 'center',
+        color: 'black',
+      
+      },
+      footer: {
+        // Footer styling here
+      },
+      menu: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '100%',
+        marginBottom: 20,
+      },
+      profileSection: {
+        alignItems: 'center',
+      },
+      // avatar: {
+      //   width: 120,
+      //   height: 120,
+      //   borderRadius: 60,
+      // },
+      
+
+      contentRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 20,
+        width: '100%', // Asegúrate de que contentRow use todo el ancho
+      },
+      avatarContainer: {
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        flex: 1, // Ajusta esto según sea necesario
+      },
+      buttonContainer: {
+        justifyContent: 'flex-end', // Esto alineará los botones a la derecha
+        alignItems: 'center',
+        flex: 1, // Ajusta esto para controlar el espacio disponible para los botones
+      },
+      avatar: {
+        width: 150,
+        height: 180,
+        marginBottom: 8
+      },
+      profileName: {
+        paddingBottom: 120,
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
+      
+      // profileName: {
+      //   // ...estilos para el nombre del perfil
+      // },
+      menuButtonAl: {
+        width: '80%', // Aproximadamente para dos botones por fila
+        aspectRatio: 1, // Para que los botones sean cuadrados
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F0F0F0', // Un color de fondo para el botón
+        borderRadius: 10, // Bordes redondeados
+        // Sombra (opcional)
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,// Tus estilos actuales para menuButton
+        marginRight: 10, // Añade margen derecho para separar los botones entre sí
       },
   });
 

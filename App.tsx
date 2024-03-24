@@ -25,6 +25,7 @@ import ListAlumnos from './src/templates/Main/ListAlumnos';
 import RegistroAlumno from './src/templates/Main/RegistroAlumno';
 import reportes from './src/templates/Extras/reportes';
 import RecursosAd from './src/templates/Main/RecursosAd';
+import SeeAlumno from './src/templates/Alumnos/SeeAlumno';
 
 if (!global.btoa) {
     global.btoa = btoa;
@@ -57,6 +58,7 @@ const App = () => {
           <Stack.Screen name="ListAlumnos" component={ListAlumnos} options={{ headerShown: false }} />
           <Stack.Screen name="RegistroAlumno" component={RegistroAlumno} options={{headerShown: false}} />
           <Stack.Screen name="RecursosAd" component={RecursosAd} options={{headerShown: false}}/>
+          <Stack.Screen name="SeeAlumno" component={SeeAlumno} options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>
