@@ -357,6 +357,7 @@ const styles = StyleSheet.create({
         paddingBottom: 120,
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center'
       },
       
       // profileName: {

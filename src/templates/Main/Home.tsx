@@ -35,56 +35,48 @@ const Home: React.FC<Props> = ({ navigation }) => {
     <ScrollView style={styles.container}>
     <View style={styles.headerContainerNav}>
       <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
-      <FontAwesome name="user-circle" size={28} color="white" />
+        <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
-      <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>
+        <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>
       <TouchableOpacity onPress={() => navigation.navigate('ListConfig')}>
-      <Fontisto name="nav-icon-list-a" size={28} color="white" />
+        <Fontisto name="nav-icon-list-a" size={28} color="white" />
       </TouchableOpacity>
     </View>
       <View style={styles.headerContainer}>
-        {/* <Image source={require('../../../src/images/AccessLearn.png')} style={styles.logo} /> */}
         <Text style={[styles.headerTitle]}>Menú General</Text>
       </View>
       
       <View style={styles.menuContainer}>
-        {/* Ejemplo de botón de menú */}
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#2A708F"}]} onPress={() => navigation.navigate('RecursosAd')}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Recursos</Text>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Adicionales</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Recursos</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Adicionales</Text>
           <Image source={require('../../../src/images/RecursosAd.png')} style={styles.menuIcon} />
-          
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#E85A55"}]}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Soporte Tecnico y Ayuda</Text>
-          <Image source={require('../../../src/images/SoporteTecnico.png')} style={styles.menuIcon} />
-          
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Soporte Tecnico y Ayuda</Text>
+          <Image source={require('../../../src/images/SoporteTecnico.png')} style={styles.menuIcon} />          
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#43943A"}]}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Personalización de actividades</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Personalización de actividades</Text>
           <Image source={require('../../../src/images/PersActividades.png')} style={styles.menuIcon} />
-          
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#0A1029"}]} onPress={() => navigation.navigate('RegistroAlumno')} >
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Registrar Niño</Text>
-          <Image source={require('../../../src/images/RegistrarN2.png')} style={styles.menuIcon} />
-          
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Registrar Niño</Text> 
+          <Image source={require('../../../src/images/RegistrarN2.png')} style={styles.menuIcon} />          
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#3896BF"}]} onPress={() => navigation.navigate('ListAlumnos')}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Lista de niños</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Lista de niños</Text>
           <Image source={require('../../../src/images/ListaDeN.png')} style={styles.menuIcon} />
-          
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.menuButton, {backgroundColor:"#3B746A"}]}>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>Configuración</Text>
-        <Text style={[styles.menuText, {color: "#ffffff"}]}>De App</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>Configuración</Text>
+          <Text style={[styles.menuText, {color: "#ffffff"}]}>De App</Text>
           <Image source={require('../../../src/images/Config.png')} style={styles.menuIcon} />
-          
         </TouchableOpacity>
         
         {/* Repite este bloque para los otros botones */}

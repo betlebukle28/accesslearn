@@ -108,29 +108,12 @@ const cargarAlumnos = async () => {
         textStyle={styles.text} // Asegúrate de que styles.text sea un objeto, no un array
       />
     )) : (
-      <Text style={styles.h2}>NO HAY REGISTROS DE ALUMNOS</Text>
+      <Text style={[styles.h2, {textAlign: 'center'}]}>CARGANDO ...</Text>
     );
   };
   
 
-  const consultarAlumno = async (id: string) => {
-    console.log('Consultar detalles del alumno con ID:', id);
-    const url = LocalHost + '3000/api/see-alumno';
-    const token = await AsyncStorage.getItem('userToken');
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-     // navigation.navigate('SeeAlumno');
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error desconocido';
-      Alert.alert('Error', errorMessage);
-    }
-  };
+ 
 
   const eliminarAlumno = (id: string) => {
     // Lógica para eliminar el alumno
