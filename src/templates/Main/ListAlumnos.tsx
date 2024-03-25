@@ -133,7 +133,7 @@ const cargarAlumnos = async () => {
   return (
     <ScrollView>
       <View style={styles.headerContainerNav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
           <FontAwesome name="user-circle" size={28} color="white" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>

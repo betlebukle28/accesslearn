@@ -35,7 +35,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
     
     <ScrollView style={styles.container}>
     <View style={styles.headerContainerNav}>
-      <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
         <FontAwesome name="user-circle" size={28} color="white" />
       </TouchableOpacity>
         <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>

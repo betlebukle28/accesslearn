@@ -30,7 +30,7 @@ const Desarrollo: React.FC<Props> = ({ navigation }) => {
     <ScrollView>
       <View>
       <View style={styles.headerContainerNav}>
-            <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
             <FontAwesome name="user-circle" size={28} color="white" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -53,7 +53,7 @@ const Desarrollo: React.FC<Props> = ({ navigation }) => {
       </View>
       <View>
       <View style={[{ alignItems: 'center'}]}>
-        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 15,}]} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 20,}]} onPress={() => navigation.navigate('Home')}>
             <View style={[styles.buttonLineCancel]}>
               <Text style={[styles.buttonTextLine, styles.TextDelete]}>Regresar</Text>
             </View>

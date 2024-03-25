@@ -17,11 +17,10 @@ type RootStackParamList = {
     Desarrollo: undefined;
   };
 
-type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'RecursosAd'>;
-type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'RecursosAd'>;
+type RecursosAdScreenNavigationProp = StackNavigationProp<RootStackParamList, 'RecursosAd'>;
 
 type Props = {
-  navigation: RegisterScreenNavigationProp;
+  navigation: RecursosAdScreenNavigationProp;
 };
 
 const RecursosAd: React.FC<Props> = ({ navigation }) => {
@@ -60,6 +59,8 @@ const RecursosAd: React.FC<Props> = ({ navigation }) => {
         <Text style={[styles.menuText, {color: "#00000"}]}>Consejos</Text>
         </TouchableOpacity>
 
+        
+
 
         
         
@@ -67,7 +68,15 @@ const RecursosAd: React.FC<Props> = ({ navigation }) => {
         {/* ... */}
       
         </View>
+        
         </View>
+        <View style={[{ alignItems: 'center', backgroundColor: '#FFFFFF'}]}>
+        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 30,}]} onPress={() => navigation.navigate('Home')}>
+            <View style={[styles.buttonLineCancel]}>
+              <Text style={[styles.buttonTextLine, styles.TextDelete]}>Regresar</Text>
+            </View>
+           </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
