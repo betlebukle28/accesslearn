@@ -371,12 +371,12 @@ const RegistroAlumno: React.FC<Props> = ({ navigation }) => {
         <Picker.Item label="Participación Activa" value="Participación Activa" />
         <Picker.Item label="Multitarea Difícil" value="Multitarea Difícil" />
       </Picker>
-      <TouchableOpacity style={styles.buttonContainer} onPress={handleRegister}>
+      <TouchableOpacity style={styles.buttonContainer2} onPress={handleRegister}>
       <View style={[styles.button, styles.Success]}>
         <Text style={styles.buttonText}>Guardar</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('ListAlumnos')}>
+      <TouchableOpacity style={styles.buttonContainer2} onPress={() => navigation.navigate('ListAlumnos')}>
       <View style={styles.buttonLineCancel}>
         <Text style={[styles.buttonTextLine, styles.TextDelete]}>Cancelar</Text>
         </View>

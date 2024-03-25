@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
       TextCenter: {
         textAlign: 'center',
       },
-      // buttonContainer: {
-      //   width: '60%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
-      //   marginTop: 20,
-      // },
+      buttonContainer2: {
+        width: '60%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
+        marginTop: 20,
+      },
       buttonSmall: {
         width: '45%', // Ancho del contenedor del botón al 60% del ancho de la pantalla
         marginTop: 2,
@@ -348,13 +348,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1, // Ajusta esto para controlar el espacio disponible para los botones
       },
+      ContainerF: {
+        //justifyContent: 'flex-end', // Esto alineará los botones a la derecha
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        padding: 20,
+        width: '100%', // Asegúrate de que contentRow use todo el ancho
+        flex: 1, // Ajusta esto para controlar el espacio disponible para los botones
+      },
       avatar: {
         width: 150,
         height: 180,
         marginBottom: 8
       },
       profileName: {
-        paddingBottom: 120,
+        paddingBottom: 50,
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'
@@ -381,6 +390,21 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,// Tus estilos actuales para menuButton
         marginRight: 10, // Añade margen derecho para separar los botones entre sí
+      },
+      footerTabsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingVertical: 10,
+        backgroundColor: '#ececec', // Cambia esto según tu diseño
+      },
+      tabButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        // Agrega aquí estilos adicionales según necesites
+      },
+      tabButtonText: {
+        color: '#007bff', // Cambia esto según tu diseño
+        // Agrega aquí estilos adicionales según necesites
       },
   });
 

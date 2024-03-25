@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthProvider } from './src/controllers/AuthContext';
 import useAutoLogout from './src/controllers/TokenValidator';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // TEMPLATES
 import Login from './src/templates/Login/Login';
 import RegisterPage from './src/templates/Login/Registro';
@@ -26,6 +27,8 @@ import RegistroAlumno from './src/templates/Main/RegistroAlumno';
 import reportes from './src/templates/Extras/reportes';
 import RecursosAd from './src/templates/Main/RecursosAd';
 import SeeAlumno from './src/templates/Alumnos/SeeAlumno';
+import InfoAlumno from './src/templates/Alumnos/InfoAlumno';
+import MyTabs from './src/templates/Main/Tabs';
 
 if (!global.btoa) {
     global.btoa = btoa;
@@ -54,11 +57,13 @@ const App = () => {
           <Stack.Screen name="ListConfig" component={ListConfig} options={{ headerShown: false }} />
           <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
           <Stack.Screen name="Desarrollo" component={Desarrollo} options={{ headerShown: false }} />
-          <Stack.Screen name="reportes" component={reportes} options={{ headerShown: false }} />
+          <Stack.Screen name="Reportes" component={reportes} options={{ headerShown: false }} />
           <Stack.Screen name="ListAlumnos" component={ListAlumnos} options={{ headerShown: false }} />
           <Stack.Screen name="RegistroAlumno" component={RegistroAlumno} options={{headerShown: false}} />
           <Stack.Screen name="RecursosAd" component={RecursosAd} options={{headerShown: false}}/>
-          <Stack.Screen name="SeeAlumno" component={SeeAlumno} options={{headerShown: false}}/>
+          <Stack.Screen name="SeeAlumno" component={SeeAlumno} options={{headerShown: false}} />
+          <Stack.Screen name="InfoAlumno" component={InfoAlumno} options={{headerShown: false}} />
+          <Stack.Screen name="MyTabs" component={MyTabs} options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>

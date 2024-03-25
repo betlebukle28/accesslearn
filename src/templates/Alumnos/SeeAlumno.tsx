@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Alert, Image  } from 'react-native';
-import { FontAwesome, Fontisto, AntDesign, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, Fontisto, AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Table, Row } from 'react-native-table-component';
 import styles from '../../css/styles';
 import LocalHost from '../../controllers/UrlLocalHost';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {StackNavigationProp, RouteProp } from '@react-navigation/native';
+import {NavigationProp, RouteProp } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 
-declare module 'react-native-table-component';
 
 // Definición del tipo Alumno fuera del componente
 type Alumno = {
@@ -31,16 +30,17 @@ type RootStackParamList = {
   ListAlumnos: undefined;
   RegistroAlumno: undefined;
   SeeAlumno: { alumnoId: string };
+  InfoAlumno: { alumnoId: string };
 };
 
 type SeeAlumnoScreenRouteProp = RouteProp<RootStackParamList, 'SeeAlumno'>;
 
 type Props = {
-  navigation: StackNavigationProp<RootStackParamList, 'SeeAlumno'>;
+  navigation: NavigationProp<RootStackParamList, 'SeeAlumno'>;
   route: SeeAlumnoScreenRouteProp;
 };
 
-const SeeAlumno: React.FC<Props> = ({ route, navigation }) => {
+const SeeAlumno = ({ route, navigation }: Props) => {
   const { alumnoId } = route.params;
   const [alumnoData, setAlumnoData] = useState<Alumno | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -125,17 +125,20 @@ const SeeAlumno: React.FC<Props> = ({ route, navigation }) => {
 
         {/* Contenedor de los botones */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]}>
+          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]} onPress={() => navigation.navigate('InfoAlumno', {
+              alumnoId: alumnoData._id, // Pasa aquí el ID del alumno
+               // Puedes pasar aquí más datos si es necesario
+               })}>
             <Text style={styles.menuText}>Información</Text>
             <Image source={informationIcon} style={styles.menuIcon} />
             
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]}>
+          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]} onPress={() => navigation.navigate('Desarrollo')}>
             <Text style={[styles.menuText, {paddingBottom: 10}]}>Actividades</Text>
             <Image source={activitiesIcon} style={[styles.menuIcon, {width: '70%'},{height: '70%'}, {marginBottom: 15}]} />
             
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]}>
+          <TouchableOpacity style={[styles.menuButtonAl, {backgroundColor: BackColor}]} onPress={() => navigation.navigate('Desarrollo')}>
             <Text style={[styles.menuText, {paddingBottom: 10}]}>Más</Text>
             <Image source={moreIcon} style={[styles.menuIcon, {width: '70%'},{height: '70%'}, {marginBottom: 15}]} />
             
@@ -144,14 +147,20 @@ const SeeAlumno: React.FC<Props> = ({ route, navigation }) => {
         <View style={styles.avatarContainer}>
           <Image source={avatarImage} style={styles.avatar} />
           <Text style={styles.profileName}>{alumnoData.nombreCompleto}</Text>
+          <View style={[{ width: '80%', alignItems: 'center'}]}>
+          <TouchableOpacity style={[styles.buttonContainer2, {width: '100%', marginTop: 0,}]} onPress={() => navigation.navigate('ListAlumnos')}>
+            <View style={[styles.buttonLineCancel]}>
+              <Text style={[styles.buttonTextLine, styles.TextDelete]}>Regresar</Text>
+            </View>
+           </TouchableOpacity>
+           </View>
         </View>
+        
       </View>
     </View>
-       
-          <View style={styles.footer}>
-            {/* Footer icons here */}
-          </View>
-        </ScrollView>
+    {/* FOOTER */}
+    
+      </ScrollView>
       );
   };
 

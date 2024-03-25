@@ -13,6 +13,7 @@ type RootStackParamList = {
     Home: undefined;
     ListConfig: undefined;
     Perfil: undefined;
+    Desarrollo: undefined;
   };
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Perfil'>;
@@ -27,20 +28,20 @@ const Perfil: React.FC<Props> = ({ navigation }) => {
   return (
     
     <ScrollView>
-    <View style={styles.headerContainerNav}>
-      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
-      <FontAwesome name="user-circle" size={28} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <Text style={styles.headerTitleNav }>A C C E S S L E A R N</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('ListConfig')}>
-      <Fontisto name="nav-icon-list-a" size={28} color="white" />
-      </TouchableOpacity>
-    </View>
-    <View style={styles.container}>
+      <View>
+      <View style={styles.headerContainerNav}>
+            <TouchableOpacity onPress={() => navigation.navigate('Desarrollo')}>
+            <FontAwesome name="user-circle" size={28} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.headerTitleNav}>A C C E S S L E A R N</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('ListConfig')}>
+            <Fontisto name="nav-icon-list-a" size={28} color="white" />
+            </TouchableOpacity>
+        </View>
       <View style={styles.headerContainer}>
-        <Text style={[styles.headerTitle]}>Perfil</Text>
+        <Text style={[styles.headerTitle]}>Pagina en Desarrollo</Text>
         <Image source={require('../../images/RobotDesarrollo.png')} style={styles.logoH4} />
       </View>
 
@@ -49,6 +50,15 @@ const Perfil: React.FC<Props> = ({ navigation }) => {
       <View style={styles.headerContainer}>
         <Text style={[styles.menuText]}>Esta Pagina esta en desarrollo</Text>
         <Text style={[styles.menuText]}>Favor de reintertar mas tarde</Text>
+      </View>
+      <View>
+      <View style={[{ alignItems: 'center'}]}>
+        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 15,}]} onPress={() => navigation.navigate('Home')}>
+            <View style={[styles.buttonLineCancel]}>
+              <Text style={[styles.buttonTextLine, styles.TextDelete]}>Regresar</Text>
+            </View>
+           </TouchableOpacity>
+      </View>
       </View>
       </View>
     </ScrollView>
