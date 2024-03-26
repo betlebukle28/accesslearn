@@ -29,6 +29,7 @@ import RecursosAd from './src/templates/Main/RecursosAd';
 import SeeAlumno from './src/templates/Alumnos/SeeAlumno';
 import InfoAlumno from './src/templates/Alumnos/InfoAlumno';
 import MyTabs from './src/templates/Main/Tabs';
+import lienzo from './src/templates/Extras/lienzo';
 
 if (!global.btoa) {
     global.btoa = btoa;
@@ -57,12 +58,12 @@ const App = () => {
           <Stack.Screen name="ListConfig" component={ListConfig} options={{ headerShown: false }} />
           <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
           <Stack.Screen name="Desarrollo" component={Desarrollo} options={{ headerShown: false }} />
-          <Stack.Screen name="Reportes" component={reportes} options={{ headerShown: false }} />
+          <Stack.Screen name="Reportes" component={lienzo} options={{ headerShown: false }} />
           <Stack.Screen name="ListAlumnos" component={ListAlumnos} options={{ headerShown: false }} />
           <Stack.Screen name="RegistroAlumno" component={RegistroAlumno} options={{headerShown: false}} />
           <Stack.Screen name="RecursosAd" component={RecursosAd} options={{headerShown: false}}/>
-          <Stack.Screen name="SeeAlumno" component={SeeAlumno} options={{headerShown: false}} />
-          <Stack.Screen name="InfoAlumno" component={InfoAlumno} options={{headerShown: false}} />
+          {/* <Stack.Screen name="SeeAlumno" component={SeeAlumno} options={{headerShown: false}} />
+          <Stack.Screen name="InfoAlumno" component={InfoAlumno} options={{headerShown: false}} /> */}
           <Stack.Screen name="MyTabs" component={MyTabs} options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>

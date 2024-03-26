@@ -10,7 +10,6 @@ import { Linking } from 'react-native';
 import styles from '../../css/styles';
 
 type RootStackParamList = {
-    Login: undefined;
     Register: undefined;
     Home: undefined;
     ListConfig: undefined;
@@ -30,7 +29,7 @@ const Desarrollo: React.FC<Props> = ({ navigation }) => {
 
   const submitBugReport = () => {
     if (bugDescription.length > 0) {
-      const email = 'rodrigonx98@gmail.com'; // reemplaza con tu correo de soporte
+      const email = 'rodrigonx98@gmail.com'; 
       const subject = encodeURIComponent('Reporte de Bug');
       const body = encodeURIComponent(bugDescription);
       const url = `mailto:${email}?subject=${subject}&body=${body}`;
