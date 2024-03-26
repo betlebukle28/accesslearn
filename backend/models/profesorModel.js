@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const alumnoSchema = new Schema({
     nombreCompleto: {type: String, required: true},
-    edad: {type: Number, required: true},
+    edad: {type: String, required: true},
     genero:{  type: String, required: true  },
     SePuedeSentar:{  type: Boolean, required: true  },
     Percepcionauditiva : {type: String, required: true},

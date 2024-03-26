@@ -99,6 +99,21 @@ const SeeAlumno = ({ route, navigation }: Props) => {
     const informationIcon = urlAvatarInfo;
     const activitiesIcon = require('../../images/Actividades.png');
     const moreIcon = require('../../images/MasOpciones.png');
+
+    const eliminarAlumno = (id: string) => {
+      // Lógica para eliminar el alumno
+      Alert.alert(
+        "Eliminar Alumno",
+        "¿Estás seguro de que quieres eliminar este alumno?",
+        [
+          {
+            text: "Cancelar",
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log('Eliminar alumno con ID:', id) }
+        ]
+      );
+    };
     
    
       return (
@@ -148,9 +163,14 @@ const SeeAlumno = ({ route, navigation }: Props) => {
           <Image source={avatarImage} style={styles.avatar} />
           <Text style={styles.profileName}>{alumnoData.nombreCompleto}</Text>
           <View style={[{ width: '80%', alignItems: 'center'}]}>
-          <TouchableOpacity style={[styles.buttonContainer2, {width: '100%', marginTop: 0,}]} onPress={() => navigation.navigate('ListAlumnos')}>
+          <TouchableOpacity style={[styles.buttonContainer2, {width: '100%', marginTop: -20,}]} onPress={() => navigation.navigate('ListAlumnos')}>
             <View style={[styles.buttonLineCancel]}>
               <Text style={[styles.buttonTextLine, styles.TextDelete]}>Regresar</Text>
+            </View>
+           </TouchableOpacity>
+           <TouchableOpacity style={[styles.buttonContainer2, {width: '100%', marginTop: -15,}]} onPress={() => eliminarAlumno(alumnoData._id)}>
+            <View style={[styles.buttonLineCancel]}>
+              <Text style={[styles.buttonTextLine, styles.TextDelete]}>Eliminar</Text>
             </View>
            </TouchableOpacity>
            </View>

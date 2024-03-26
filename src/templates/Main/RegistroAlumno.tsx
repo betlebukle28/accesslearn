@@ -115,7 +115,7 @@ const RegistroAlumno: React.FC<Props> = ({ navigation }) => {
     };
 
     const handleRegister = async () => {
-        const url = LocalHost + '3000/api/registrar-alumno'; // URL de tu API
+        const url = `${LocalHost}3000/api/registrar-alumno`; // URL de tu API
         const token = await AsyncStorage.getItem('userToken');
         // Bbjeto con los datos del usuario
         const AlumnoData = {
@@ -158,7 +158,7 @@ const RegistroAlumno: React.FC<Props> = ({ navigation }) => {
           if (response.status === 200) {
             console.log('Usuario registrado con éxito:', json);
             Alert.alert("Usuario registrado con éxito: ", json.nombreCompleto);
-            // Navegar a la pantalla de Login
+          
             navigation.navigate('ListAlumnos');
           } else {
             console.log('Error en el registro:', json);

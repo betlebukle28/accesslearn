@@ -30,7 +30,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const url = LocalHost + '3000/api/login-profesor'; // URL de tu API
+    const url = `${LocalHost}3000/api/login-profesor`; // URL de tu API
     
     // Bbjeto con los datos del usuario
     const userData = {

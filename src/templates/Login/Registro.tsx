@@ -27,7 +27,7 @@ const Registro: React.FC<Props> = ({ navigation }) => {
   const [Usuario, setUsuario] =  useState('');
 
   const handleRegister = async () => {
-    const url = LocalHost + '3000/api/registrar-profesor'; // URL de tu API
+    const url = `${LocalHost}3000/api/registrar-profesor`; // URL de tu API
     
     // Bbjeto con los datos del usuario
     const userData = {

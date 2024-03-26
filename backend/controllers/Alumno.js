@@ -55,6 +55,7 @@ const ListAlumnos = async (req, res) => {
         }
 };
 
+//CONSULTAR ALUMNO
 const ConAlumno = async (req, res) => {
     console.log("ConAlumno");
     console.log(req.usuarioId);
@@ -79,6 +80,33 @@ const SeeAlumno = async (req,res)=>{
 
 }
 
+const UpdateAlumno = async (req,res) =>{
+
+    try {
+        console.log("UpdateAlumno");
+        const alumnoId = req.params.alumnoId; // Asumiendo que el ID del alumno viene en req.usuarioId
+        const updateData = req.body; // Los datos a actualizar deberían venir en el cuerpo de la solicitud (req.body)
+        console.log('ALUMNO ID: ', alumnoId);
+        console.log('updateData: ', updateData);
+        // Actualizando el alumno
+        const updatedAlumno = await Alumno.findOneAndUpdate({ _id: alumnoId }, updateData, { new: true }); // `new: true` devuelve el documento actualizado
+
+        if (!updatedAlumno) {
+            return res.status(404).json({ message: 'Alumno no encontrado', result: updatedAlumno });
+        }
+
+        // Enviar respuesta con el alumno actualizado
+        res.status(200).json({
+            message: 'Alumno actualizado con éxito',
+            result: updatedAlumno
+        });
+    } catch (error) {
+        console.error('Error al actualizar alumno:', error);
+        res.status(500).json({ message: 'Error al actualizar el alumno' });
+    }
+
+};
+
 
 
 
@@ -86,5 +114,6 @@ module.exports = {
     registrarAlumno,
     ListAlumnos,
     SeeAlumno,
-    ConAlumno
+    ConAlumno,
+    UpdateAlumno
 };

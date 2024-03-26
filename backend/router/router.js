@@ -11,4 +11,5 @@ router.post("/registrar-alumno",verifyToken, alumnoController.registrarAlumno);
 router.post("/list-alumnos",verifyToken, alumnoController.ListAlumnos);
 router.post("/see-alumno",verifyToken, alumnoController.SeeAlumno);
 router.get("/alumno/:alumnoId", verifyToken, alumnoController.ConAlumno);
+router.post("/alumno/actualizar/:alumnoId", verifyToken, alumnoController.UpdateAlumno);
 module.exports = router;

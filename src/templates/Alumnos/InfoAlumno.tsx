@@ -12,10 +12,10 @@ import { FontAwesome5 } from '@expo/vector-icons';
 type Alumno = {
   _id: string;
   nombreCompleto: string;
-  edad: number;
+  edad: string;
   genero: string;
   Notas: string;
-  SePuedeSentar: string;
+  SePuedeSentar: boolean;
   Percepcionauditiva: string;
   Percepcionvisual: string;
   Discriminacion: string;
@@ -58,6 +58,92 @@ const InfoAlumno = ({ route, navigation }: Props) => {
   const [alumnoData, setAlumnoData] = useState<Alumno | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [selectedValue, setSelectedValue] = useState<string>('');
+
+    const [nombreCompleto, setnombreCompleto] = useState('');
+    const [edad, setedad] = useState('');
+    const [genero, setgenero] = useState('');
+    const [SePuedeSentar, setSePuedeSentar] = useState<boolean>(true);
+    const [Percepcionauditiva, setPercepcionauditiva] = useState('');
+    const [Percepcionvisual, setPercepcionvisual] = useState('');
+    const [Discriminacion, setDiscriminacion] = useState('');
+    const [Direccion, setDireccion] = useState('');
+    const [Coordinacion, setCoordinacion] = useState('');
+    const [Prension, setPrension] = useState('');
+    const [Presion, setPresion] = useState('');
+    const [Atencion, setAtencion] = useState('');
+    const [Asociacion, setAsociacion] = useState('');
+    const [Seleccion, setSeleccion] = useState('');
+    const [Clasificacion, setClasificacion] = useState('');
+    const [Denominacion, setDenominacion] = useState('');
+    const [Generalizacion, setGeneralizacion] = useState('');
+    const [Notas, setNotas] = useState('');
+    const [TipoAprendizaje, setTipoAprendizaje] = useState('');
+
+    
+    const handleUpdate = async () => {
+      console.log('Alumno ID: ', alumnoId);
+      const url = `${LocalHost}3000/api/alumno/actualizar/${alumnoId}`; // URL de tu API
+      console.log('url: ', url);
+      const token = await AsyncStorage.getItem('userToken');
+      console.log('Token: ', token);
+      // Bbjeto con los datos del usuario
+      const AlumnoUpdateData = {
+        nombreCompleto: nombreCompleto,
+        edad: edad,
+        genero: genero,
+        SePuedeSentar: SePuedeSentar,
+        Percepcionauditiva: Percepcionauditiva,
+        Percepcionvisual: Percepcionvisual,
+        Discriminacion: Discriminacion,
+        Direccion: Direccion,
+        Coordinacion: Coordinacion,
+        Prension: Prension,
+        Presion: Presion,
+        Atencion: Atencion,
+        Asociacion: Asociacion,
+        Seleccion: Seleccion,
+        Clasificacion: Clasificacion,
+        Denominacion: Denominacion,
+        Generalizacion: Generalizacion,
+        Notas: Notas,
+        TipoAprendizaje: TipoAprendizaje
+      };
+    
+      try {
+        // Solicitud POST a la API
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify(AlumnoUpdateData),
+        });
+        // console.log(token);
+        console.log('antes del JSON: ');
+        const json = await response.json();
+        console.log('JSON: ', json);
+        if (response.status === 200) {
+          console.log('Alumno Actualizado con éxito:', json);
+          Alert.alert("Alumno Actualizado con éxito: ", json.nombreCompleto);
+          
+          navigation.navigate('SeeAlumno', {
+              alumnoId: alumnoId, // Pasa aquí el ID del alumno
+               // Puedes pasar aquí más datos si es necesario
+               });
+       
+          
+        } else {
+          console.log('Error al actualizar:', json);
+          Alert.alert('Error','Error al actualizar el alumno');
+          
+        }
+      } catch (error) {
+        console.error('Error de solicitud:', error);
+      }
+    };
+
   useEffect(() => {
     const fetchAlumnoData = async () => {
       // Asumiendo que tienes una función para obtener los datos del alumno por su ID
@@ -71,6 +157,7 @@ const InfoAlumno = ({ route, navigation }: Props) => {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
+          
         });
     
         if (!response.ok) {
@@ -79,13 +166,56 @@ const InfoAlumno = ({ route, navigation }: Props) => {
     
         const alumnoData = await response.json();
         setAlumnoData(alumnoData);
+        setnombreCompleto(alumnoData.nombreCompleto);
+        setedad(alumnoData.edad);
+        setgenero(alumnoData.genero);
+        setSePuedeSentar(alumnoData.SePuedeSentar);
+        setPercepcionauditiva(alumnoData.Percepcionauditiva);
+        setPercepcionvisual(alumnoData.Percepcionvisual);
+        setDiscriminacion(alumnoData.Discriminacion);
+        setDireccion(alumnoData.Direccion);
+        setCoordinacion(alumnoData.Coordinacion);
+        setPrension(alumnoData.Prension);
+        setPresion(alumnoData.Presion);
+        setAtencion(alumnoData.Atencion);
+        setAsociacion(alumnoData.Asociacion);
+        setSeleccion(alumnoData.Seleccion);
+        setClasificacion(alumnoData.Clasificacion);
+        setDenominacion(alumnoData.Denominacion);
+        setGeneralizacion(alumnoData.Generalizacion);
+        setNotas(alumnoData.Notas);
+        setTipoAprendizaje(alumnoData.TipoAprendizaje);
       } catch (error) {
         console.error('Error al obtener los datos del alumno:', error);
         Alert.alert('Error', 'No se pudo obtener la información del alumno');
       }
       setIsLoading(false);
+      if (alumnoData) {
+        setnombreCompleto(alumnoData.nombreCompleto);
+        setedad(alumnoData.edad);
+        setgenero(alumnoData.genero);
+        setSePuedeSentar(alumnoData.SePuedeSentar);
+        setPercepcionauditiva(alumnoData.Percepcionauditiva);
+        setPercepcionvisual(alumnoData.Percepcionvisual);
+        setDiscriminacion(alumnoData.Discriminacion);
+        setDireccion(alumnoData.Direccion);
+        setCoordinacion(alumnoData.Coordinacion);
+        setPrension(alumnoData.Prension);
+        setPresion(alumnoData.Presion);
+        setAtencion(alumnoData.Atencion);
+        setAsociacion(alumnoData.Asociacion);
+        setSeleccion(alumnoData.Seleccion);
+        setClasificacion(alumnoData.Clasificacion);
+        setDenominacion(alumnoData.Denominacion);
+        setGeneralizacion(alumnoData.Generalizacion);
+        setNotas(alumnoData.Notas);
+        setTipoAprendizaje(alumnoData.TipoAprendizaje);
+      }
     };
     fetchAlumnoData();
+
+    
+    
   }, [alumnoId]);
 
   if (!alumnoData) {
@@ -140,49 +270,47 @@ const InfoAlumno = ({ route, navigation }: Props) => {
         {/* Contenedor de los botones */}
         <View style={styles.ContainerF}>          
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Nombre Completo</Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.nombreCompleto}/>
+            <TextInput style={styles.input} placeholder="Nombre" value={nombreCompleto} onChangeText={text => setnombreCompleto(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Edad</Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.edad.toString()}/>
+            <TextInput style={styles.input} placeholder="Edad" value={edad} onChangeText={text => setedad(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Genero </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.genero}/>
+            <TextInput style={styles.input} placeholder="Genero" value={genero} onChangeText={text => setgenero(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Percepcion Auditiva </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Percepcionauditiva}/>
+            <TextInput style={styles.input} placeholder="Percepcion Auditiva" value={Percepcionauditiva} onChangeText={text => setPercepcionauditiva(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Percepcion Visual </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Percepcionvisual}/>
+            <TextInput style={styles.input} placeholder="Percepcion Visual" value={Percepcionvisual} onChangeText={text => setPercepcionvisual(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Discriminacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Discriminacion}/>
+            <TextInput style={styles.input} placeholder="Discriminacion" value={Discriminacion} onChangeText={text => setDiscriminacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Direccion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Direccion}/>
+            <TextInput style={styles.input} placeholder="Direccion" value={Direccion} onChangeText={text => setDireccion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Coordinacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Coordinacion}/>
+            <TextInput style={styles.input} placeholder="Coordinacion" value={Coordinacion} onChangeText={text => setCoordinacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Prension </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Prension}/>
+            <TextInput style={styles.input} placeholder="Prension" value={Prension} onChangeText={text => setPrension(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Presion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Presion}/>
+            <TextInput style={styles.input} placeholder="Presion" value={Presion} onChangeText={text => setPresion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Atencion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Atencion}/>
+            <TextInput style={styles.input} placeholder="Atencion" value={Atencion} onChangeText={text => setAtencion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Asociacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Asociacion}/>
+            <TextInput style={styles.input} placeholder="Asociacion" value={Asociacion} onChangeText={text => setAsociacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Seleccion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Seleccion}/>
+            <TextInput style={styles.input} placeholder="Seleccion" value={Seleccion} onChangeText={text => setSeleccion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Clasificacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Clasificacion}/>
+            <TextInput style={styles.input} placeholder="Clasificacion" value={Clasificacion} onChangeText={text => setClasificacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Denominacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Denominacion}/>
+            <TextInput style={styles.input} placeholder="Denominacion" value={Denominacion} onChangeText={text => setDenominacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Generalizacion </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Generalizacion}/>
+            <TextInput style={styles.input} placeholder="Generalizacion" value={Generalizacion} onChangeText={text => setGeneralizacion(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Notas </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.Notas}/>
+            <TextInput style={styles.input} placeholder="Notas" value={Notas} onChangeText={text => setNotas(text)}/>
             <Text style={[styles.menuText, {textAlign: 'left'}]}>Tipo de Aprendizaje </Text>
-            <TextInput style={styles.input} placeholder="Nombre" value={alumnoData.TipoAprendizaje}/>
+            <TextInput style={styles.input} placeholder="Tipo de Aprendizaje" value={TipoAprendizaje} onChangeText={text => setTipoAprendizaje(text)}/>
             
             {/* <Text style={[styles.menuText, {paddingBottom: 10}]}>Actividades</Text>
             <Text style={[styles.menuText, {paddingBottom: 10}]}>Más</Text> */}
         </View>
 
-        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 10,}]} onPress={() => navigation.navigate('InfoAlumno', {
-                alumnoId: alumnoData._id, 
-                })}>
+        <TouchableOpacity style={[styles.buttonContainer2, {width: '80%', marginTop: 10,}]} onPress={() => handleUpdate()}>
                     <View style={[styles.button, styles.Success]}>
                         <Text style={styles.buttonText}>Guardar</Text>
                         </View>

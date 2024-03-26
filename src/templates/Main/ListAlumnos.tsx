@@ -50,7 +50,7 @@ const ListAlumnos: React.FC<Props> = ({ navigation }) => {
 }, []);
 
 const cargarAlumnos = async () => {
-  const url = LocalHost + '3000/api/list-alumnos';
+  const url = `${LocalHost}3000/api/list-alumnos`;
   const token = await AsyncStorage.getItem('userToken');
   try {
     const response = await fetch(url, {
